@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fmt.Println("This program is for naming conventions.2")
+	fmt.Println("This program is for naming conventions.3")
 }
