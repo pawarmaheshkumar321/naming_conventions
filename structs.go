@@ -6,6 +6,7 @@ type Person struct {
 	firstname string
 	lastname  string
 	age       int
+	address   Address
 }
 
 type Student struct {
@@ -15,11 +16,17 @@ type Student struct {
 	mark2  int
 }
 
+type Address struct {
+	city, country string
+}
+
 func main() {
 
 	p1 := Person{
 		firstname: "Maheshkumar",
 		lastname:  "Pawar",
+		age:       22,
+		address:   Address{city: "San Francisco", country: "USA"},
 	}
 
 	fmt.Println(p1.fullName())
@@ -43,6 +50,11 @@ func main() {
 
 	fmt.Printf("Total marks of %s are %d\n", student1.name, student1.totalmarks())
 
+	fmt.Printf("Incremented age %d\n", p1.incrementAgeByOne())
+	fmt.Printf("Age %d\n", p1.age)
+
+	fmt.Printf("City is %s and country %s\n", p1.address.city, p1.address.country)
+
 }
 
 func (p Person) fullName() string {
@@ -53,4 +65,9 @@ func (s Student) totalmarks() int {
 	var total int
 	total = s.mark1 + s.mark2
 	return total
+}
+
+func (p *Person) incrementAgeByOne() int {
+	p.age++
+	return p.age
 }
